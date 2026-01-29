@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600;700&family=Cinzel:wght@400;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-novel-darker text-novel-text font-serif overflow-x-hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-novel-dark;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-novel-accent-dark rounded;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-novel-accent;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-novel-accent text-novel-dark;
+  }
+
+  /* Decorative corner elements */
+  .corner-decor {
+    @apply absolute w-16 h-16 border-novel-accent opacity-60 pointer-events-none;
+  }
+
+  .corner-decor-tl {
+    @apply top-5 left-5 border-t-2 border-l-2;
+  }
+
+  .corner-decor-tr {
+    @apply top-5 right-5 border-t-2 border-r-2;
+  }
+
+  .corner-decor-bl {
+    @apply bottom-5 left-5 border-b-2 border-l-2;
+  }
+
+  .corner-decor-br {
+    @apply bottom-5 right-5 border-b-2 border-r-2;
+  }
+
+  /* Dialog box styling */
+  .dialog-box {
+    @apply relative bg-gradient-to-br
+         from-[rgb(15_23_42/0.95)]
+         to-[rgb(2_6_23/0.98)]
+         border border-novel-accent-dark rounded shadow-2xl backdrop-blur-md
+         before:absolute before:left-5 before:right-5 before:top-4 before:h-px
+         before:bg-gradient-to-r before:from-transparent before:via-novel-accent before:to-transparent
+         before:opacity-30
+         after:absolute after:left-5 after:right-5 after:bottom-4 after:h-px
+         after:bg-gradient-to-r after:from-transparent after:via-novel-accent after:to-transparent
+         after:opacity-30;
+  }
+
+  /* Character frame */
+  .character-frame {
+    @apply relative bg-gradient-to-br from-novel-dark/90 to-novel-darker/95 
+           border-2 border-novel-accent shadow-lg shadow-novel-accent/20
+           clip-path-fancy;
+  }
+
+  /* Choice button */
+  .choice-btn {
+    @apply relative flex items-center gap-4 px-8 py-5 
+           bg-gradient-to-br from-novel-dark/80 to-novel-darker/90 
+           border-2 border-novel-accent-dark rounded-sm
+           text-novel-text font-normal tracking-wide
+           transition-all duration-300 cursor-pointer overflow-hidden
+           hover:border-novel-accent hover:shadow-lg hover:shadow-novel-accent/20
+           active:scale-95
+           before:absolute before:top-0 before:-left-full before:w-full before:h-full 
+           before:bg-gradient-to-r before:from-transparent before:via-novel-accent/10 before:to-transparent
+           before:transition-all before:duration-500
+           hover:before:left-full;
+  }
+
+  /* Text shimmer effect */
+  .text-shimmer {
+    @apply bg-clip-text text-transparent bg-gradient-to-r 
+           from-novel-text-dim via-novel-accent to-novel-text-dim 
+           bg-[length:1000px_100%] animate-shimmer;
+  }
+}
+
+@layer utilities {
+  .clip-path-fancy {
+    clip-path: polygon(
+      10px 0,
+      calc(100% - 10px) 0,
+      100% 10px,
+      100% calc(100% - 10px),
+      calc(100% - 10px) 100%,
+      10px 100%,
+      0 calc(100% - 10px),
+      0 10px
+    );
+  }
+}
